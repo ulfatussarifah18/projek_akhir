@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('gurus', function (Blueprint $table) {
             $table->id();
+            $table->string('nip');
             $table->string('nama');
-            $table->string('alamat');
-            $table->string('mata pelajaran');
+            $table->text('alamat');
             $table->timestamps();
         });
     }

@@ -4,82 +4,82 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Siswa;
+use App\Models\Guru;
 use Illuminate\Support\Facades\Validator;
 
-class SiswaController extends Controller
+class GuruController extends Controller
 {
     public function index()
     {
-        $siswa = Siswa::all();
+        $guru = Guru::all();
 
-        return response()->json($siswa);
+        return response()->json($guru);
     }
 
     public function store(Request $request)
     {
         $validator = validator::make($request->all(), [
-            'nisn' => 'required',
+            'nip' => 'required',
             'nama' => 'required',
-            'kelas' => 'required',
+            'alamat' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
-        $siswa = Siswa::create([
-            'nisn'     => $request->nisn,
+        $guru = Guru::create([
+            'nip'     => $request->nip,
             'nama'   => $request->nama,
-            'kelas'   => $request->kelas,
+            'alamat'   => $request->alamat,
         ]);
         return response()->json([
             'success' => true,
             'mesage' => 'Data Berhasil Ditambahkan!',
-            'data' => $siswa
+            'data' => $guru
         ]);
     }
 
     public function show($id)
     {
-        $siswa = Siswa::find($id);
+        $guru = Guru::find($id);
         return response()->json([
             'success' => true,
             'mesage' => 'Detail Data Guru!',
-            'data' => $siswa
+            'data' => $guru
         ]);
     }
 
     public function update(Request $request, $id)
     {
         $validator = validator::make($request->all(), [
-            'nisn' => 'required',
+            'nip' => 'required',
             'nama' => 'required',
-            'kelas' => 'required',
+            'alamat' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
-        $siswa = Siswa::find($id);
-        $siswa->update([
-            'nisn'     => $request->nisn,
+        $guru = Guru::find($id);
+        $guru->update([
+            'nip'     => $request->nip,
             'nama'   => $request->nama,
-            'kelas'   => $request->kelas,
+            'alamat'   => $request->alamat,
         ]);
         return response()->json([
             'success' => true,
-            'mesage' => 'Data Siswa Berhasil Diubah!',
-            'data' => $siswa
+            'mesage' => 'Data Guru Berhasil Diubah!',
+            'data' => $guru
         ]);
     }
 
     public function destroy($id)
     {
-        $siswa = Siswa::find($id);
+        $guru = Guru::find($id);
 
-        $siswa->delete();
+        $guru->delete();
         return response()->json([
             'success' => true,
-            'mesage' => 'Data Siswa Berhasil Dihapus!',
-            'data' => $siswa
+            'mesage' => 'Data Guru Berhasil Dihapus!',
+            'data' => $guru
         ]);
     }
 }

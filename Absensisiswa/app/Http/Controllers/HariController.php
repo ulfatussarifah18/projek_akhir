@@ -4,82 +4,74 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Siswa;
+use App\Models\Hari;
 use Illuminate\Support\Facades\Validator;
 
-class SiswaController extends Controller
+class HariController extends Controller
 {
     public function index()
     {
-        $siswa = Siswa::all();
+        $hari = Hari::all();
 
-        return response()->json($siswa);
+        return response()->json($hari);
     }
 
     public function store(Request $request)
     {
         $validator = validator::make($request->all(), [
-            'nisn' => 'required',
             'nama' => 'required',
-            'kelas' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
-        $siswa = Siswa::create([
-            'nisn'     => $request->nisn,
+        $hari = Hari::create([
             'nama'   => $request->nama,
-            'kelas'   => $request->kelas,
         ]);
         return response()->json([
             'success' => true,
             'mesage' => 'Data Berhasil Ditambahkan!',
-            'data' => $siswa
+            'data' => $hari
         ]);
     }
 
     public function show($id)
     {
-        $siswa = Siswa::find($id);
+        $hari = Hari::find($id);
         return response()->json([
             'success' => true,
             'mesage' => 'Detail Data Guru!',
-            'data' => $siswa
+            'data' => $hari
         ]);
     }
 
     public function update(Request $request, $id)
     {
         $validator = validator::make($request->all(), [
-            'nisn' => 'required',
             'nama' => 'required',
-            'kelas' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
-        $siswa = Siswa::find($id);
-        $siswa->update([
-            'nisn'     => $request->nisn,
+        $hari = Hari::find($id);
+        $hari->update([
             'nama'   => $request->nama,
-            'kelas'   => $request->kelas,
         ]);
         return response()->json([
             'success' => true,
-            'mesage' => 'Data Siswa Berhasil Diubah!',
-            'data' => $siswa
+            'mesage' => 'Data Hari Berhasil Diubah!',
+            'data' => $hari
         ]);
     }
 
     public function destroy($id)
     {
-        $siswa = Siswa::find($id);
+        $hari = Hari::find($id);
 
-        $siswa->delete();
+        $hari->delete();
         return response()->json([
             'success' => true,
-            'mesage' => 'Data Siswa Berhasil Dihapus!',
-            'data' => $siswa
+            'mesage' => 'Data Hari Berhasil Dihapus!',
+            'data' => $hari
         ]);
     }
 }
