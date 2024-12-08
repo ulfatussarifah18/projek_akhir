@@ -39,7 +39,7 @@ class KelasController extends Controller
         $kelas = Kelas::find($id);
         return response()->json([
             'success' => true,
-            'mesage' => 'Detail Data Guru!',
+            'mesage' => 'Detail Data Kelas!',
             'data' => $kelas
         ]);
     }

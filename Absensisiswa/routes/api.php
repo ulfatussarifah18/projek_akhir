@@ -6,6 +6,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\HariController;
+use App\Http\Controllers\MapelController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -20,5 +21,6 @@ Route::delete('guru/{id}', [GuruController::class, 'destroy']);
 Route::resource('siswas', SiswaController::class);
 Route::resource('kelas', KelasController::class);
 Route::resource('hari', HariController::class);
+Route::resource('mapel', MapelController::class);
 
 

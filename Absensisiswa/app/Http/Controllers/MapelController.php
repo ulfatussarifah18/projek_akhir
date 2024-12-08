@@ -2,65 +2,76 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mapel;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
+use App\Models\Mapel;
+use Illuminate\Support\Facades\Validator;
 
 class MapelController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $mapel = Mapel::all();
+
+        return response()->json($hari);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validator = validator::make($request->all(), [
+            'nama' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+        $mapel = Mapel::create([
+            'nama'   => $request->nama,
+        ]);
+        return response()->json([
+            'success' => true,
+            'mesage' => 'Data Berhasil Ditambahkan!',
+            'data' => $mapel
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Mapel $mapel)
+    public function show($id)
     {
-        //
+        $mapel = Mapel::find($id);
+        return response()->json([
+            'success' => true,
+            'mesage' => 'Detail Data Mapel!',
+            'data' => $Mapel
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Mapel $mapel)
+    public function update(Request $request, $id)
     {
-        //
+        $validator = validator::make($request->all(), [
+            'nama' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+        $mapel = Mapel::find($id);
+        $mapel->update([
+            'nama'   => $request->nama,
+        ]);
+        return response()->json([
+            'success' => true,
+            'mesage' => 'Data Mapel Berhasil Diubah!',
+            'data' => $mapel
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Mapel $mapel)
+    public function destroy($id)
     {
-        //
-    }
+        $mapel = Mapel::find($id);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Mapel $mapel)
-    {
-        //
+        $mapel->delete();
+        return response()->json([
+            'success' => true,
+            'mesage' => 'Data Mapel Berhasil Dihapus!',
+            'data' => $mapel
+        ]);
     }
 }

@@ -43,7 +43,7 @@ class SiswaController extends Controller
         $siswa = Siswa::find($id);
         return response()->json([
             'success' => true,
-            'mesage' => 'Detail Data Guru!',
+            'mesage' => 'Detail Data Siswa!',
             'data' => $siswa
         ]);
     }

@@ -39,7 +39,7 @@ class HariController extends Controller
         $hari = Hari::find($id);
         return response()->json([
             'success' => true,
-            'mesage' => 'Detail Data Guru!',
+            'mesage' => 'Detail Data Hari!',
             'data' => $hari
         ]);
     }
