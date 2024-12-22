@@ -1,22 +1,26 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons"; // Menggunakan ikon Ionicons
+import { Ionicons } from "@expo/vector-icons"; // Untuk ikon
 import { useNavigation } from "@react-navigation/native";
 
-export default function DataGuruScreen() {
+export default function DataSiswaScreen() {
   const navigation = useNavigation();
 
-  // Data contoh guru
-  const dataGuru = [
-    { id: "1", name: "Budi Santoso", position: "Guru Matematika" },
-    { id: "2", name: "Siti Aminah", position: "Guru Bahasa Indonesia" },
-    { id: "3", name: "Hendra Saputra", position: "Guru IPA" },
-    { id: "4", name: "Ratna Sari", position: "Guru IPS" },
+  // Data lengkap siswa
+  const dataSiswa = [
+    { id: "1", name: "Andi Wijaya", class: "X IPA 1", birthDate: "2006-05-12", address: "Jl. Merpati No. 5, Jakarta" },
+    { id: "2", name: "Rina Susanti", class: "X IPA 2", birthDate: "2006-08-19", address: "Jl. Anggrek No. 8, Bandung" },
+    { id: "3", name: "Beni Haryanto", class: "X IPS 1", birthDate: "2006-11-23", address: "Jl. Melati No. 3, Surabaya" },
+    { id: "4", name: "Siti Marlina", class: "XI IPA 1", birthDate: "2005-03-15", address: "Jl. Kenanga No. 6, Medan" },
+    { id: "5", name: "Anisatul Rohmah", class: "XI IPA 1", birthDate: "2005-07-07", address: "Jl. Mawar No. 9, Yogyakarta" },
+    { id: "6", name: "Eka Fitriya", class: "XI IPA 1", birthDate: "2005-12-20", address: "Jl. Cemara No. 1, Semarang" },
+    { id: "7", name: "Nadia Husna", class: "XII IPA 1", birthDate: "2004-02-28", address: "Jl. Dahlia No. 2, Malang" },
+    { id: "8", name: "Ferdi Ansyah", class: "XII IPA 1", birthDate: "2004-06-14", address: "Jl. Bunga Raya No. 4, Palembang" },
   ];
 
   // Fungsi untuk menangani tombol detail
-  const handleDetail = (guru) => {
-    alert(`Detail Guru: \nNama: ${guru.name}\nPosisi: ${guru.position}`);
+  const handleDetail = (siswa) => {
+    alert(`Detail Siswa:\n` + `Nama: ${siswa.name}\n` + `Kelas: ${siswa.class}\n` + `Tanggal Lahir: ${siswa.birthDate}\n` + `Alamat: ${siswa.address}`);
   };
 
   return (
@@ -26,15 +30,17 @@ export default function DataGuruScreen() {
         <Ionicons name="chevron-back" size={24} color="#002B5B" />
       </TouchableOpacity>
 
-      <Text style={styles.headerText}>Data Guru</Text>
+      <Text style={styles.headerText}>Data Siswa</Text>
       <FlatList
-        data={dataGuru}
+        data={dataSiswa}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.card}>
             <View style={styles.infoContainer}>
               <Text style={styles.nameText}>{item.name}</Text>
-              <Text style={styles.positionText}>{item.position}</Text>
+              <Text style={styles.classText}>{item.class}</Text>
+              <Text style={styles.classText}>Tanggal Lahir: {item.birthDate}</Text>
+              <Text style={styles.classText}>Alamat: {item.address}</Text>
             </View>
             <TouchableOpacity style={styles.detailButton} onPress={() => handleDetail(item)}>
               <Ionicons name="information-circle-outline" size={24} color="#fff" />
@@ -57,11 +63,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 20,
-  },
-  backButtonText: {
-    color: "#007AFF",
-    fontSize: 16,
-    marginLeft: 5,
   },
   headerText: {
     fontSize: 24,
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#333",
   },
-  positionText: {
+  classText: {
     fontSize: 14,
     color: "#555",
     marginTop: 5,

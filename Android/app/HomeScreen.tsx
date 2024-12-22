@@ -39,25 +39,50 @@ export default function HomeScreen() {
             <FontAwesome name="user" size={24} color="#002B5B" />
             <Text style={styles.menuText}>Data Guru</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem}>
+          <TouchableOpacity
+            onPress={() => {
+              router.push("/pages/DataSiswa");
+            }}
+            style={styles.menuItem}
+          >
             <FontAwesome name="users" size={24} color="#002B5B" />
             <Text style={styles.menuText}>Data Siswa</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem}>
+          <TouchableOpacity
+            onPress={() => {
+              router.push("/pages/Jadwal");
+            }}
+            style={styles.menuItem}
+          >
             <MaterialCommunityIcons name="calendar" size={24} color="#002B5B" />
             <Text style={styles.menuText}>Jadwal</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.menuRow}>
-          <TouchableOpacity style={styles.menuItem}>
+          <TouchableOpacity
+            onPress={() => {
+              router.push("/pages/Absensi");
+            }}
+            style={styles.menuItem}
+          >
             <FontAwesome name="check-square" size={24} color="#002B5B" />
             <Text style={styles.menuText}>Absensi</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem}>
+          <TouchableOpacity
+            onPress={() => {
+              router.push("/pages/Mapel");
+            }}
+            style={styles.menuItem}
+          >
             <FontAwesome name="book" size={24} color="#002B5B" />
             <Text style={styles.menuText}>Mapel</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem}>
+          <TouchableOpacity
+            onPress={() => {
+              router.push("/pages/Kelas");
+            }}
+            style={styles.menuItem}
+          >
             <FontAwesome name="building" size={24} color="#002B5B" />
             <Text style={styles.menuText}>Kelas</Text>
           </TouchableOpacity>
@@ -69,10 +94,6 @@ export default function HomeScreen() {
         <TouchableOpacity style={styles.announcementButton}>
           <FontAwesome name="bell" size={24} color="#fff" />
           <Text style={styles.announcementText}>Pengumuman</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.historyButton}>
-          <FontAwesome name="history" size={24} color="#fff" />
-          <Text style={styles.historyText}>Riwayat</Text>
         </TouchableOpacity>
       </View>
 
@@ -181,16 +202,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     marginLeft: 10,
-  },
-  historyButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#002B5B",
-    marginHorizontal: 40,
-    paddingVertical: 10,
-    borderRadius: 10,
-    width: "70%",
   },
   historyText: {
     color: "#fff",

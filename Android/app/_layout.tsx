@@ -8,6 +8,7 @@ export default function _layout() {
       <Stack.Screen name="login" />
       <Stack.Screen name="ResetPassword" />
       <Stack.Screen name="HomeScreen" />
+      <Stack.Screen name="Profile" />
     </Stack>
   );
 }
